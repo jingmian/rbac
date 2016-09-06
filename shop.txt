@@ -661,7 +661,7 @@ CREATE TABLE IF NOT EXISTS `sw_auth` (
   `auth_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `auth_name` varchar(20) CHARACTER SET utf8 NOT NULL COMMENT '名称',
   `auth_pid` smallint(6) unsigned NOT NULL COMMENT '父id',
-  `auth_c` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '模块',
+  `auth_c` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '控制器',
   `auth_a` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '操作方法',
   `auth_path` varchar(32) CHARACTER SET utf8 NOT NULL COMMENT '全路径',
   `auth_level` tinyint(4) NOT NULL DEFAULT '0' COMMENT '基别',
