@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2016 �?09 �?06 �?16:13
+-- 生成日期: 2016 ��?09 ��?06 ��?16:40
 -- 服务器版本: 5.5.47
 -- PHP 版本: 5.5.30
 
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `msg` text,
-  `sender` varchar(32) NOT NULL DEFAULT '',
-  `receiver` varchar(32) NOT NULL DEFAULT '',
-  `color` char(7) NOT NULL DEFAULT '',
-  `biaoqing` varchar(32) NOT NULL DEFAULT '',
+  `msg` text CHARACTER SET utf8,
+  `sender` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `receiver` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `color` char(7) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `biaoqing` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `add_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=628 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=628 ;
 
 --
 -- 转存表中的数据 `message`
@@ -659,14 +659,14 @@ INSERT INTO `message` (`id`, `msg`, `sender`, `receiver`, `color`, `biaoqing`, `
 
 CREATE TABLE IF NOT EXISTS `sw_auth` (
   `auth_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
-  `auth_name` varchar(20) NOT NULL COMMENT '名称',
+  `auth_name` varchar(20) CHARACTER SET utf8 NOT NULL COMMENT '名称',
   `auth_pid` smallint(6) unsigned NOT NULL COMMENT '父id',
-  `auth_c` varchar(32) NOT NULL DEFAULT '' COMMENT '模块',
-  `auth_a` varchar(32) NOT NULL DEFAULT '' COMMENT '操作方法',
-  `auth_path` varchar(32) NOT NULL COMMENT '全路径',
+  `auth_c` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '模块',
+  `auth_a` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '操作方法',
+  `auth_path` varchar(32) CHARACTER SET utf8 NOT NULL COMMENT '全路径',
   `auth_level` tinyint(4) NOT NULL DEFAULT '0' COMMENT '基别',
   PRIMARY KEY (`auth_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=28 ;
 
 --
 -- 转存表中的数据 `sw_auth`
@@ -700,9 +700,9 @@ INSERT INTO `sw_auth` (`auth_id`, `auth_name`, `auth_pid`, `auth_c`, `auth_a`, `
 
 CREATE TABLE IF NOT EXISTS `sw_category` (
   `cat_id` int(11) NOT NULL AUTO_INCREMENT,
-  `cat_name` varchar(64) NOT NULL DEFAULT '',
+  `cat_name` varchar(64) CHARACTER SET utf8 NOT NULL DEFAULT '',
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
 
 --
 -- 转存表中的数据 `sw_category`
@@ -723,20 +723,20 @@ INSERT INTO `sw_category` (`cat_id`, `cat_name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `sw_goods` (
   `goods_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `goods_name` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '商品名称',
+  `goods_name` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '商品名称',
   `goods_weight` int(11) NOT NULL DEFAULT '0' COMMENT '重量',
   `goods_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '价格',
   `goods_number` int(11) NOT NULL DEFAULT '100' COMMENT '数量',
   `goods_category_id` int(11) NOT NULL DEFAULT '0' COMMENT '分类',
   `goods_brand_id` int(11) NOT NULL DEFAULT '0' COMMENT '品牌',
-  `goods_introduce` text COLLATE utf8_unicode_ci COMMENT '详细介绍',
-  `goods_big_img` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '商品图片',
-  `goods_small_img` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '商品小图',
+  `goods_introduce` text CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '详细介绍',
+  `goods_big_img` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '商品图片',
+  `goods_small_img` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '商品小图',
   `goods_create_time` int(11) NOT NULL DEFAULT '0' COMMENT '添加时间',
   `goods_last_time` int(11) NOT NULL DEFAULT '0',
-  `abc` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `abc` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`goods_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='商品表' AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商品表' AUTO_INCREMENT=56 ;
 
 --
 -- 转存表中的数据 `sw_goods`
@@ -799,12 +799,12 @@ INSERT INTO `sw_goods` (`goods_id`, `goods_name`, `goods_weight`, `goods_price`,
 
 CREATE TABLE IF NOT EXISTS `sw_manager` (
   `mg_id` int(11) NOT NULL AUTO_INCREMENT,
-  `mg_name` varchar(32) NOT NULL,
-  `mg_pwd` varchar(32) NOT NULL,
+  `mg_name` varchar(32) CHARACTER SET utf8 NOT NULL,
+  `mg_pwd` varchar(32) CHARACTER SET utf8 NOT NULL,
   `mg_time` int(10) unsigned NOT NULL COMMENT '时间',
   `mg_role_id` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '角色id',
   PRIMARY KEY (`mg_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
 
 --
 -- 转存表中的数据 `sw_manager`
@@ -825,11 +825,11 @@ INSERT INTO `sw_manager` (`mg_id`, `mg_name`, `mg_pwd`, `mg_time`, `mg_role_id`)
 
 CREATE TABLE IF NOT EXISTS `sw_role` (
   `role_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
-  `role_name` varchar(20) NOT NULL COMMENT '角色名称',
-  `role_auth_ids` varchar(128) NOT NULL DEFAULT '' COMMENT '权限ids,1,2,5',
-  `role_auth_ac` text COMMENT '模块-操作',
+  `role_name` varchar(20) CHARACTER SET utf8 NOT NULL COMMENT '角色名称',
+  `role_auth_ids` varchar(128) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '权限ids,1,2,5',
+  `role_auth_ac` text CHARACTER SET utf8 COMMENT '模块-操作',
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `sw_role`
@@ -847,19 +847,19 @@ INSERT INTO `sw_role` (`role_id`, `role_name`, `role_auth_ids`, `role_auth_ac`) 
 
 CREATE TABLE IF NOT EXISTS `sw_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `username` varchar(128) NOT NULL DEFAULT '' COMMENT '登录名',
-  `password` varchar(32) NOT NULL DEFAULT '' COMMENT '登录密码',
-  `user_email` varchar(64) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `username` varchar(128) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '登录名',
+  `password` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '登录密码',
+  `user_email` varchar(64) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '邮箱',
   `user_sex` tinyint(4) NOT NULL DEFAULT '1' COMMENT '性别',
-  `user_qq` varchar(32) NOT NULL DEFAULT '' COMMENT 'qq',
-  `user_tel` varchar(32) NOT NULL DEFAULT '' COMMENT '手机',
+  `user_qq` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT 'qq',
+  `user_tel` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '手机',
   `user_xueli` tinyint(4) NOT NULL DEFAULT '1' COMMENT '学历',
-  `user_hobby` varchar(32) NOT NULL DEFAULT '' COMMENT '爱好',
-  `user_introduce` text COMMENT '简介',
+  `user_hobby` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '爱好',
+  `user_introduce` text CHARACTER SET utf8 COMMENT '简介',
   `user_time` int(11) DEFAULT NULL,
   `last_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='会员表' AUTO_INCREMENT=133 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='会员表' AUTO_INCREMENT=133 ;
 
 --
 -- 转存表中的数据 `sw_user`
@@ -897,8 +897,8 @@ INSERT INTO `sw_user` (`user_id`, `username`, `password`, `user_email`, `user_se
 
 CREATE TABLE IF NOT EXISTS `td_book` (
   `id` int(11) DEFAULT NULL,
-  `name` varchar(32) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `name` varchar(32) CHARACTER SET utf8 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -908,7 +908,7 @@ CREATE TABLE IF NOT EXISTS `td_book` (
 
 CREATE TABLE IF NOT EXISTS `tencent_qq` (
   `id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
