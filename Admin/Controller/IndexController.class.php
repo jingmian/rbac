@@ -20,6 +20,7 @@ class IndexController extends CommonController {
 	    $role=M('role')->where(array('role_id'=>$manager['mg_role_id']))->find();
 	   
 	    $map['auth_id']=array ('in',$role['role_auth_ids']);
+	    $map['auth_level']=0;
 	    $auth=M('auth')->where($map)->select();
 	    
 	    $this->assign('auth',$auth);
