@@ -1,53 +1,63 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
+    
     <head>
         <meta http-equiv=content-type content="text/html; charset=utf-8" />
-        <link href="__PUBLIC__/css/admin.css" type="text/css" rel="stylesheet" />
+        <link href="__PUBLIC__/css/admin.css" type="text/css" rel="stylesheet"
+        />
         <script language=javascript>
-            function expand(el)
-            {
+            function expand(el) {
                 childobj = document.getElementById("child" + el);
 
-                if (childobj.style.display == 'none')
-                {
+                if (childobj.style.display == 'none') {
                     childobj.style.display = 'block';
-                }
-                else
-                {
+                } else {
                     childobj.style.display = 'none';
                 }
                 return;
             }
         </script>
     </head>
+    
     <body>
-        <table height="100%" cellspacing=0 cellpadding=0 width=170 
-               background=__PUBLIC__/img/menu_bg.jpg border=0>
-               <tr>
+        <table height="100%" cellspacing=0 cellpadding=0 width=170 background=__PUBLIC__/img/menu_bg.jpg
+        border=0>
+            <tr>
                 <td valign=top align=middle>
                     <table cellspacing=0 cellpadding=0 width="100%" border=0>
-
                         <tr>
-                            <td height=10></td></tr></table>
+                            <td height=10></td>
+                        </tr>
+                    </table>
+                <foreach name='auth' item='auth'>
                     <table cellspacing=0 cellpadding=0 width=150 border=0>
-                        <foreach name='auth' item='auth'>
-                        <tr height=22>
-                            <td style="padding-left: 30px" background=__PUBLIC__/img/menu_bt.jpg><a 
-                                    class=menuparent onclick=expand(1) 
-                                    href="javascript:void(0);">{$auth.auth_name}</a></td></tr>
-                        <tr height=4>
-                        </foreach>
-                            <td></td></tr></table>
-                    <table id=child0 style="display: none" cellspacing=0 cellpadding=0 
-                           width=150 border=0>
-
+                        
+                            <tr height=22>
+                                <td style="padding-left: 30px" background=__PUBLIC__/img/menu_bt.jpg>
+                                    <a class=menuparent onclick=expand({$auth.auth_id}) href="javascript:void(0);">{$auth.auth_name}</a>
+                                </td>
+                            </tr>
+                            <tr height=4>
+                        
+                        <td></td>
+                        </tr>
+                    </table>
+                    <table id=child{$auth.auth_id} style="display: none" cellspacing=0 cellpadding=0 width=150
+                    border=0>
+                        <foreach name='sauth' item='sauth'>
                         <tr height=20>
-                            <td align=middle width=30><img height=9 
-                                                           src="__PUBLIC__/img/menu_icon.gif" width=9></td>
-                            <td><a class=menuchild 
-                                   href="#" 
-                                   target=main>{$auth.auth_name}</a></td></tr>
-                       
+                            <td align=middle width=30>
+                                <img height=9 src="__PUBLIC__/img/menu_icon.gif" width=9>
+                            </td>
+                            <pre><?php var_dump($sauth);?></pre>
+                            <td>
+                                <a class=menuchild href="#" target=main>{$sauth.auth_name}</a>
+                            </td>
+                        </tr>
+                        </foreach>
+                    </table>
+                </foreach>
         </table>
     </body>
+
 </html>

@@ -23,6 +23,10 @@ class IndexController extends CommonController {
 	    $map['auth_level']=0;
 	    $auth=M('auth')->where($map)->select();
 	    
+	    $map['auth_level']=1;
+	    $sauth=M('auth')->where($map)->select();
+	    
+	    $this->assign('sauth',$sauth);
 	    $this->assign('auth',$auth);
         $this->display();
     }
