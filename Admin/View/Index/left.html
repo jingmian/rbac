@@ -45,6 +45,7 @@
                     <table id=child{$auth.auth_id} style="display: none" cellspacing=0 cellpadding=0 width=150
                     border=0>
                         <foreach name='sauth' item='sauth'>
+                            <if condition="$auth.auth_id === $sauth['auth_pid']">
                         <tr height=20>
                             <td align=middle width=30>
                                 <img height=9 src="__PUBLIC__/img/menu_icon.gif" width=9>
@@ -54,10 +55,13 @@
                                 <a class=menuchild href="#" target=main>{$sauth.auth_name}</a>
                             </td>
                         </tr>
+                            </if>   
                         </foreach>
                     </table>
                 </foreach>
+            </tr>
         </table>
+  
     </body>
 
 </html>
