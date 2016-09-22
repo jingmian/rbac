@@ -11,10 +11,10 @@ class LoginController extends Controller {
 		   $password=trim(I('post.admin_psd'));
            $verCode = trim(I('post.captcha'));
 		    if(!empty($arr)){
-                   $User=D('User');
-				   $use=$User->where(array('username'=>$adminnuser))->find();
+                   $User=D('Manager');
+				   $use=$User->where(array('mg_name'=>$adminnuser))->find();
 
-				   if($use['password']!==$password){
+				   if($use['mg_pwd']!==$password){
 				       $this->error('密码错误');
 				   }else{
 				   
